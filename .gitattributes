@@ -1,2 +1,2 @@
 assets/** linguist-vendored
-backend/vendor/** linguist-vendored
+vendor/** linguist-vendored
