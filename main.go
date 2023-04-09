@@ -10,12 +10,10 @@ func main() {
 	app := fiber.New()
 	app.Static("/assets", "./frontend/dist/assets/")
 
-	frontendRoutes := []string {
+	frontendRoutes := []string{
 		"/",
 		"/about",
 	}
-
-	// app.Get("/", controllers.Home)
 
 	for _, route := range frontendRoutes {
 		app.Get(route, controllers.Home)
@@ -27,10 +25,11 @@ func main() {
 		AllowOrigins: "http://localhost:3000, http://localhost:5173",
 		AllowHeaders: "Origin, Content-Type, Accept",
 	}))
-	
+
 	api := app.Group("/api")
 
-	api.Get("/todosList", controllers.TodosList)
+	api.Get("/todos", controllers.TodosList)
+	api.Post("/todos/create", controllers.AddTodo)
 
 	app.Listen(":3000")
 }
